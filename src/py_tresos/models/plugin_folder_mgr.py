@@ -53,6 +53,8 @@ def _generate_config_file(src, dst, info: PluginInfo, delimiter="#"):
         AR_MAJOR = info.ar_major,
         AR_MINOR = info.ar_minor,
         AR_PATCH = info.ar_patch,
+        AR_PACKAGE = info.ar_package,
+        VENDOR_ID = info.vendor_id,
         DATE_TIME = info.date_time, 
         TRESOS_ROOT = info.tresos_root, 
         GEN_FILES_TEXT = info.gen_files_text,
@@ -86,7 +88,9 @@ def _generate_plugin_file(src, dst, info: PluginInfo):
         PATCH = info.patch,
         AR_MAJOR = info.ar_major,
         AR_MINOR = info.ar_minor,
-        AR_PATCH = info.ar_patch
+        AR_PATCH = info.ar_patch,
+        AR_PACKAGE = info.ar_package,
+        VENDOR_ID = info.vendor_id
     )
 
     with open(dst, 'w') as f_out:
@@ -125,6 +129,10 @@ def eb_plugin_create(cfg_file):
 
     _generate_config_file("make/defs.mak", '%s/make/%s_defs.mak' % (info.root_path, info.name), info = info, delimiter='$')
     _generate_config_file("make/rules.mak", '%s/make/%s_rules.mak' % (info.root_path, info.name), info = info, delimiter='$')
+
+    _generate_config_file("generate_swcd/swcd/Bswmd.arxml", '%s/generate_swcd/swcd/%s_Bswmd.arxml' % (info.root_path, info.name), info = info)
+    _generate_config_file("generate_swcd/swcd/swc_interface.arxml", '%s/generate_swcd/swcd/%s_swc_interface.arxml' % (info.root_path, info.name), info = info)
+    _generate_config_file("generate_swcd/swcd/swc_internal.arxml", '%s/generate_swcd/swcd/%s_swc_internal.arxml' % (info.root_path, info.name), info = info)
     
     _copy_file(".classpath.tpl", '%s/.classpath' % info.root_path)
     _copy_file("build.properties.tpl", '%s/build.properties' % info.root_path)

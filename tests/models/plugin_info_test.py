@@ -26,6 +26,7 @@ class TestPluginInfo:
         assert(plugin_info.uppercase_name == "")
         assert(plugin_info.gen_files_text == "")
         assert(plugin_info.src_files_text == "")
+        assert(plugin_info.vendor_id == "0x0000")
 
 
     def test_parse(self):
@@ -50,3 +51,4 @@ class TestPluginInfo:
                  "\t$(Plugin_Demo_OUTPUT_PATH)/src/Plugin_Demo_Cfg.c"))
         assert(plugin_info.src_files_text == 
                 ("\t$(Plugin_Demo_CORE_PATH)/src/Plugin_Demo.c"))
+        assert(plugin_info.vendor_id == "0x0008")

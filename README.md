@@ -26,6 +26,10 @@ Run `pytest --cov=py_tresos --cov-report term-missing` to verify all the functio
 
 To Create the java project for the EB Tresos Studio Plugin.
 
+### TOML configuration
+
+[Vender Id](https://www.autosar.org/about/vendorid/)
+
 ### 1.2.1. CLI
 
 `eb-plugin [-c|--cfg name][-h|-help]`
@@ -40,5 +44,5 @@ To Create the java project for the EB Tresos Studio Plugin.
 **Generate the default folder for EcuInfo**
 
 ```
-eb-plugin -c template.toml
+eb-plugin -c toml/plugin_demo.toml
 ```

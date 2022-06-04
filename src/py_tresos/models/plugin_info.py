@@ -14,6 +14,7 @@ class PluginInfo(AbstractInfo):
         self.header_file_tpl = ""
         self.source_file_tpl = ""
         self.ar_package = ""
+        self.vendor_id = "0x0000"
 
     @property
     def gen_files_text(self) -> str:
@@ -47,11 +48,13 @@ class PluginInfo(AbstractInfo):
         for file in data['component']['gen_source_files']:
             self.gen_source_files.append(file)
         self.ar_package = data['component']['ar_package']
+        self.vendor_id = data['component']['vendor_id']
         if 'template' in data:
             if 'source_file' in data['template']:
                 self.source_file_tpl = data['template']['source_file']
             if 'header_file' in data['template']:
                 self.header_file_tpl = data['template']['header_file']
+        
 
         #self.dump()
 

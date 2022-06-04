@@ -1,5 +1,6 @@
-include src/eb_plugin/tpls/plugin/*.tpl
-include src/eb_plugin/tpls/plugin/config/*.tpl
-include src/eb_plugin/tpls/plugin/META-INF/*.tpl
-include src/eb_plugin/tpls/plugin/doc/*.md
-include src/eb_plugin/tpls/plugin/make/*.mak
+include src/py_tresos/tpls/plugin/*.tpl
+include src/py_tresos/tpls/plugin/config/*.tpl
+include src/py_tresos/tpls/plugin/META-INF/*.tpl
+include src/py_tresos/tpls/plugin/doc/*.md
+include src/py_tresos/tpls/plugin/make/*.mak
+include src/py_tresos/tpls/plugin/generate_swcd/swcd/*.arxml

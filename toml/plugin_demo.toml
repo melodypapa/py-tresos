@@ -4,7 +4,7 @@ author     = "Your Name"
 company    = "Your Company"
 version    = "1.0.0"
 ar_version = "4.0.3"
-vendor_id  = "0"
+vendor_id  = "0x0008"
 ar_package = "ARRoot"
 
 header_files = [
