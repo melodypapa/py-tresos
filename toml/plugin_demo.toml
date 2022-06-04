@@ -1,0 +1,30 @@
+[component]
+name       = "Plugin_Demo"
+author     = "Your Name"
+company    = "Your Company"
+version    = "1.0.0"
+ar_version = "4.0.3"
+vendor_id  = "0"
+ar_package = "ARRoot"
+
+header_files = [
+    "Plugin_Demo.h"
+]
+
+source_files = [
+    "Plugin_Demo.c"
+]
+
+gen_header_files = [
+    "Plugin_Demo_Cfg.h",
+]
+
+gen_source_files = [
+    "Plugin_Demo_Cfg.c",
+]
+
+tresos_root = "X:/tresos"
+
+[template]
+source_file = ""
+header_file = ""

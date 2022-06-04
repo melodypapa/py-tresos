@@ -1,0 +1,5 @@
+include src/eb_plugin/tpls/plugin/*.tpl
+include src/eb_plugin/tpls/plugin/config/*.tpl
+include src/eb_plugin/tpls/plugin/META-INF/*.tpl
+include src/eb_plugin/tpls/plugin/doc/*.md
+include src/eb_plugin/tpls/plugin/make/*.mak
