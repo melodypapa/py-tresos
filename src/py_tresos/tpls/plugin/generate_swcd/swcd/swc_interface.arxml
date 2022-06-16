@@ -13,25 +13,6 @@
               <OPERATIONS>
                 <CLIENT-SERVER-OPERATION>
                   <SHORT-NAME>#{COMPONENT}_global_service</SHORT-NAME>
-                  <ARGUMENTS>
-                    <ARGUMENT-DATA-PROTOTYPE>
-                      <SHORT-NAME>cmd_id</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
-                      <DIRECTION>IN</DIRECTION>
-                    </ARGUMENT-DATA-PROTOTYPE>
-                    <ARGUMENT-DATA-PROTOTYPE>
-                      <SHORT-NAME>size_in_b</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
-                      <DIRECTION>INOUT</DIRECTION>
-                    </ARGUMENT-DATA-PROTOTYPE>
-                    <ARGUMENT-DATA-PROTOTYPE>
-                      <SHORT-NAME>data</SHORT-NAME>
-                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/Data_Types/uint64_Array</TYPE-TREF>
-                      <DIRECTION>INOUT</DIRECTION>
-                    </ARGUMENT-DATA-PROTOTYPE>
-                  </ARGUMENTS>
-                  <DIAG-ARG-INTEGRITY>false</DIAG-ARG-INTEGRITY>
-                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
                   <POSSIBLE-ERROR-REFS>
                     <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/#{AR_PACKAGE}/#{COMPONENT}_PortInterfaces/IFCS_#{COMPONENT}/E_NOT_OK</POSSIBLE-ERROR-REF>
                   </POSSIBLE-ERROR-REFS>

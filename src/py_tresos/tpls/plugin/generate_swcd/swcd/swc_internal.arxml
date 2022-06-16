@@ -33,17 +33,6 @@
                     <RUNNABLE-ENTITY>
                       <SHORT-NAME>Runnable_#{COMPONENT}</SHORT-NAME>
                       <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
-                      <ARGUMENTS>
-                        <RUNNABLE-ENTITY-ARGUMENT>
-                          <SYMBOL>cmd_id</SYMBOL>
-                        </RUNNABLE-ENTITY-ARGUMENT>
-                        <RUNNABLE-ENTITY-ARGUMENT>
-                          <SYMBOL>size_in_b</SYMBOL>
-                        </RUNNABLE-ENTITY-ARGUMENT>
-                        <RUNNABLE-ENTITY-ARGUMENT>
-                          <SYMBOL>data</SYMBOL>
-                        </RUNNABLE-ENTITY-ARGUMENT>
-                      </ARGUMENTS>
                       <SYMBOL>#{COMPONENT}_global_service</SYMBOL>
                     </RUNNABLE-ENTITY>
                   </RUNNABLES>
