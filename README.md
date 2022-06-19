@@ -26,11 +26,61 @@ Run `pytest --cov=py_tresos --cov-report term-missing` to verify all the functio
 
 To Create the java project for the EB Tresos Studio Plugin.
 
-### TOML configuration
+### 1.2.1. TOML configuration
 
-[Vender Id](https://www.autosar.org/about/vendorid/)
+| Category  | Key              | Description                                                             |
+| --------- | ---------------- | ----------------------------------------------------------------------- |
+| component | name             | the plugin name                                                         |
+|           | author           | the author name of the plugin                                           |
+|           | company          | the company owner for the plugin                                        |
+|           | version          | the version of the plugin                                               |
+|           | ar_version       | the AUTOSAR version of the plugin                                       |
+|           | vendor_id        | the [vender Id](https://www.autosar.org/about/vendorid/) for the plugin |
+|           | ar_package       | the root package for the ARXML                                          |
+|           | header_files     | the header file name list for the plugin                                |
+|           | source_files     | the source file name list for the plugin                                |
+|           | gen_header_files | the generated head file name list for the plugin                        |
+|           | gen_source_files | the generate source file name list for the plugin                       |
+|           | tresos_root      | the root path for the EB Tresos Studios                                 |
+| template  | source_file      | the template name for the source file                                   |
+|           | header_file      | the template name for the header file                                   |
 
-### 1.2.1. CLI
+### 1.2.2. TOML configuration example
+
+```
+[component]
+name       = "Plugin_Demo"
+author     = "Your Name"
+company    = "Your Company"
+version    = "1.0.0"
+ar_version = "4.0.3"
+vendor_id  = "0x0008"
+ar_package = "ARRoot"
+
+header_files = [
+    "Plugin_Demo.h"
+]
+
+source_files = [
+    "Plugin_Demo.c"
+]
+
+gen_header_files = [
+    "Plugin_Demo_Cfg.h",
+]
+
+gen_source_files = [
+    "Plugin_Demo_Cfg.c",
+]
+
+tresos_root = "X:/tresos"
+
+[template]
+source_file = ""
+header_file = ""
+``` 
+
+### 1.2.3. CLI
 
 `eb-plugin [-c|--cfg name][-h|-help]`
 
@@ -39,7 +89,7 @@ To Create the java project for the EB Tresos Studio Plugin.
 -h            : Show the help information.
 ```
 
-### 1.2.2. Example
+### 1.2.4. Example
 
 **Generate the default folder for EcuInfo**
 
