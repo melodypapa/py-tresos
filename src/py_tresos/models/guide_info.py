@@ -6,9 +6,12 @@ class GuideInfo(AbstractInfo):
     def __init__(self) -> None:
         super().__init__()
 
+        self.tresos_root = ""
+        self.ar_package = ""
         self.package = ""
         self.backend_class = ""
         self.page_class = ""
+        
 
     @property
     def package_path(self) -> str:
@@ -17,6 +20,8 @@ class GuideInfo(AbstractInfo):
     def _parse_toml_data(self, data):
         super()._parse_toml_data(data)
 
+        self.ar_package = data['component']['ar_package']
+        self.tresos_root = data['component']['tresos_root']
         self.package = data['component']['package']
         self.backend_class = data['class']['backend']
         self.page_class = data['class']['page']

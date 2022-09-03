@@ -1,4 +1,4 @@
-source.. = src/
+source.. = Java/
 output.. = build/classes/
 bin.includes = META-INF/,\
                .,\

@@ -44,8 +44,10 @@ def _generate_config_file(src, dst, info: GuideInfo, delimiter="#"):
         AR_MAJOR = info.ar_major,
         AR_MINOR = info.ar_minor,
         AR_PATCH = info.ar_patch,
+        AR_PACKAGE = info.ar_package,
         DATE_TIME = info.date_time, 
         PACKAGE = info.package,
+        TRESOS_ROOT = info.tresos_root, 
         BACKEND_CLASS = info.backend_class,
         PAGE_CLASS = info.page_class,
     )
@@ -78,6 +80,7 @@ def _generate_plugin_file(src, dst, info: GuideInfo):
         AR_MAJOR = info.ar_major,
         AR_MINOR = info.ar_minor,
         AR_PATCH = info.ar_patch,
+        AR_PACKAGE = info.ar_package,
         PACKAGE = info.package,
         BACKEND_CLASS = info.backend_class,
         PAGE_CLASS = info.page_class,
@@ -99,17 +102,18 @@ def eb_guide_create(cfg_file):
     _generate_plugin_file('plugin.xml.tpl', '%s/plugin.xml' % info.root_path, info = info)
 
     #_generate_config_file('doc/user_manual.md', '%s/doc/%s_um.md' % (info.root_path, info.name), info = info, delimiter='$')
-    #_generate_config_file('config/template.xdm.tpl', '%s/config/%s.xdm' % (info.root_path, info.name), info = info)
+    _generate_config_file('config/template.xdm.tpl', '%s/config/%s.xdm' % (info.root_path, info.name), info = info)
 
     _generate_config_file('.project.tpl', '%s/.project' % info.root_path, info = info)
     _generate_config_file("META-INF/MANIFEST.MF.tpl", '%s/META-INF/MANIFEST.MF' % info.root_path,  info = info)
+    _generate_config_file("component.ant.tpl",'%s/%s.ant' % (info.root_path, info.name),  info = info)
 
     # generate the java source 
-    src_path = os.path.join(info.root_path, "src", info.package_path)
+    src_path = os.path.join(info.root_path, "Java", info.package_path)
 
     os.makedirs(src_path, exist_ok=True)
-    _generate_config_file('src/backend.java.tpl', '%s/%s' % (src_path, info.backend_class + ".java"), info = info, delimiter='$')
-    _generate_config_file('src/page.java.tpl', '%s/%s' % (src_path, info.page_class + ".java"), info = info, delimiter='$')
+    _generate_config_file('Java/backend.java.tpl', '%s/%s' % (src_path, info.backend_class + ".java"), info = info, delimiter='$')
+    _generate_config_file('Java/page.java.tpl', '%s/%s' % (src_path, info.page_class + ".java"), info = info, delimiter='$')
 
     _copy_file(".classpath.tpl", '%s/.classpath' % info.root_path)
     _copy_file("build.properties.tpl", '%s/build.properties' % info.root_path)
@@ -120,4 +124,4 @@ def create_folders(root_path):
     os.makedirs(root_path + "/config", exist_ok=True)
     os.makedirs(root_path + "/META-INF", exist_ok=True)
     os.makedirs(root_path + "/doc", exist_ok=True)
-    os.makedirs(root_path + "/src", exist_ok=True)
+    os.makedirs(root_path + "/Java", exist_ok=True)

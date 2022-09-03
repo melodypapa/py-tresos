@@ -28,7 +28,7 @@ setup(
     packages = find_packages(where='src'),
     package_dir= {'': 'src'},
 
-    install_requires=['toml'],
+    install_requires=['toml', 'jinja2'],
     include_package_data=True,
     
     extras_require={'pytest': 'pytest-cov'},

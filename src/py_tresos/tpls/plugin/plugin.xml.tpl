@@ -68,7 +68,7 @@
              id="#{COMPONENT}_TemplateBaseCodeGenerator"
              moduleId="#{COMPONENT}_TS_#{VERSION}">
              
-          <!-- common template path parameters -->
+        <!-- common template path parameters -->
 	      <parameter name="templates"
 	                 mode="generate,verify" value="generate"/>
 	

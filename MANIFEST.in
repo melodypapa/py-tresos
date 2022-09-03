@@ -8,5 +8,6 @@ include src/py_tresos/tpls/xpath/*.tpl
 include src/py_tresos/tpls/xpath/META-INF/*.tpl
 include src/py_tresos/tpls/xpath/src/*.tpl
 include src/py_tresos/tpls/guide/*.tpl
+include src/py_tresos/tpls/guide/config/*.tpl
 include src/py_tresos/tpls/guide/META-INF/*.tpl
-include src/py_tresos/tpls/guide/src/*.tpl
+include src/py_tresos/tpls/guide/Java/*.tpl

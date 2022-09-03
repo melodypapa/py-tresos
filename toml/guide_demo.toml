@@ -7,8 +7,8 @@ version     = "1.0.0"
 package     = "packagename"
 vendor_id  =   "0"
 
+tresos_root = "X:/tresos"
+
 [class]
 backend     = "Backend"
 page        = "Page"
-
-tresos_root = "X:/tresos"
