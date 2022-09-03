@@ -13,6 +13,11 @@ class PluginInfo(AbstractInfo):
         self.gen_source_files = []
         self.header_file_tpl = ""
         self.source_file_tpl = ""
+        self.tpls = {}
+        self.tpls['xdm'] = ""
+        self.tpls['bswmd_arxml'] = ""
+        self.tpls['swc_interface_arxml'] = ""
+        self.tpls['swc_interface_arxml'] = ""
         self.ar_package = ""
         self.vendor_id = "0x0000"
 
@@ -54,6 +59,14 @@ class PluginInfo(AbstractInfo):
                 self.source_file_tpl = data['template']['source_file']
             if 'header_file' in data['template']:
                 self.header_file_tpl = data['template']['header_file']
+            if 'xdm' in data['template']:
+                self.tpls['xdm'] = data['template']['xdm']
+            if 'bswmd_arxml' in data['template']:
+                self.tpls['bswmd_arxml'] = data['template']['bswmd_arxml']
+            if 'swc_interface_arxml' in data['template']:
+                self.tpls['swc_interface_arxml'] = data['template']['swc_interface_arxml']
+            if 'swc_internal_arxml' in data['template']:
+                self.tpls['swc_interface_arxml'] = data['template']['swc_interface_arxml']
         
 
         #self.dump()

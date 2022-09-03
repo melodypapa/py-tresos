@@ -4,3 +4,9 @@ include src/py_tresos/tpls/plugin/META-INF/*.tpl
 include src/py_tresos/tpls/plugin/doc/*.md
 include src/py_tresos/tpls/plugin/make/*.mak
 include src/py_tresos/tpls/plugin/generate_swcd/swcd/*.arxml
+include src/py_tresos/tpls/xpath/*.tpl
+include src/py_tresos/tpls/xpath/META-INF/*.tpl
+include src/py_tresos/tpls/xpath/src/*.tpl
+include src/py_tresos/tpls/guide/*.tpl
+include src/py_tresos/tpls/guide/META-INF/*.tpl
+include src/py_tresos/tpls/guide/src/*.tpl

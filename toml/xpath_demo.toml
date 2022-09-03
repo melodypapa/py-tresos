@@ -1,0 +1,10 @@
+[component]
+name       =   "XPath_Demo"
+author     =   "Your Name"
+company    =   "Your name"
+version    =   "1.0.0"
+ar_version =   "4.0.3"
+
+[java]
+package    =   "demo_package"
+class      =   "xpath_demo"

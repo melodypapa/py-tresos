@@ -1,0 +1,14 @@
+[component]
+name        = "GuideDemo"
+author      = "Your name"
+company     = "Your company"
+ar_version  = "4.0.3"
+version     = "1.0.0"
+package     = "packagename"
+vendor_id  =   "0"
+
+[class]
+backend     = "Backend"
+page        = "Page"
+
+tresos_root = "X:/tresos"

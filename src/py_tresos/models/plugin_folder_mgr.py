@@ -1,5 +1,6 @@
 import os
 import os.path
+from pickle import FALSE
 import sys
 
 from shutil import copyfile
@@ -22,16 +23,18 @@ def _copy_file(src, dst, local_tpl: bool = True):
         copyfile(src, dst)
 
 
-def _generate_config_file(src, dst, info: PluginInfo, delimiter="#"):
+def _generate_config_file(src, dst, info: PluginInfo, delimiter="#", local_tpl: bool = True):
     if os.path.exists(dst):
         print("<%s> exists and skipped" % dst)
         return
 
     print("Generate <%s>" % dst)
 
-    root_path = os.path.abspath(__file__ + plugin_tpl_path)
+    if (local_tpl):
+        root_path = os.path.abspath(__file__ + plugin_tpl_path)
+        src = os.path.realpath(root_path + "/" + src)
 
-    with open(root_path + "/" + src) as f_in:
+    with open(src) as f_in:
         content = f_in.read()
 
     if delimiter == "#":
@@ -121,7 +124,11 @@ def eb_plugin_create(cfg_file):
     _generate_plugin_file('plugin.xml.tpl', '%s/plugin.xml' % info.root_path, info = info)
 
     _generate_config_file('doc/user_manual.md', '%s/doc/%s_um.md' % (info.root_path, info.name), info = info, delimiter='$')
-    _generate_config_file('config/template.xdm.tpl', '%s/config/%s.xdm' % (info.root_path, info.name), info = info)
+
+    if ('xdm' in info.tpls and info.tpls['xdm'] != ""):
+        _generate_config_file(info.tpls['xdm'], '%s/config/%s.xdm' % (info.root_path, info.name), info = info, local_tpl = False)
+    else:
+        _generate_config_file('config/template.xdm.tpl', '%s/config/%s.xdm' % (info.root_path, info.name), info = info)
 
     _generate_config_file('.project.tpl', '%s/.project' % info.root_path, info = info)
     _generate_config_file("META-INF/MANIFEST.MF.tpl", '%s/META-INF/MANIFEST.MF' % info.root_path,  info = info)
@@ -130,9 +137,20 @@ def eb_plugin_create(cfg_file):
     _generate_config_file("make/defs.mak", '%s/make/%s_defs.mak' % (info.root_path, info.name), info = info, delimiter='$')
     _generate_config_file("make/rules.mak", '%s/make/%s_rules.mak' % (info.root_path, info.name), info = info, delimiter='$')
 
-    _generate_config_file("generate_swcd/swcd/Bswmd.arxml", '%s/generate_swcd/swcd/%s_Bswmd.arxml' % (info.root_path, info.name), info = info)
-    _generate_config_file("generate_swcd/swcd/swc_interface.arxml", '%s/generate_swcd/swcd/%s_swc_interface.arxml' % (info.root_path, info.name), info = info)
-    _generate_config_file("generate_swcd/swcd/swc_internal.arxml", '%s/generate_swcd/swcd/%s_swc_internal.arxml' % (info.root_path, info.name), info = info)
+    if ('bswmd_arxml' in info.tpls and info.tpls['bswmd_arxml'] != ""):
+        _generate_config_file(info.tpls['bswmd_arxml'], '%s/generate_swcd/swcd/%s_Bswmd.arxml' % (info.root_path, info.name), info = info, local_tpl = False)
+    else:
+        _generate_config_file("generate_swcd/swcd/Bswmd.arxml", '%s/generate_swcd/swcd/%s_Bswmd.arxml' % (info.root_path, info.name), info = info)
+        
+    if ('swc_interface_arxml' in info.tpls and info.tpls['swc_interface_arxml'] != ""):
+        _generate_config_file(info.tpls['swc_interface_arxml'], '%s/generate_swcd/swcd/%s_swc_interface.arxml' % (info.root_path, info.name), info = info, local_tpl = False)
+    else:
+        _generate_config_file("generate_swcd/swcd/swc_interface.arxml", '%s/generate_swcd/swcd/%s_swc_interface.arxml' % (info.root_path, info.name), info = info)
+
+    if ('swc_internal_arxml' in info.tpls and info.tpls['swc_internal_arxml'] != ""):
+        _generate_config_file(info.tpls['swc_internal_arxml'], '%s/generate_swcd/swcd/%s_swc_internal.arxml' % (info.root_path, info.name), info = info, local_tpl = False)
+    else:
+        _generate_config_file("generate_swcd/swcd/swc_internal.arxml", '%s/generate_swcd/swcd/%s_swc_internal.arxml' % (info.root_path, info.name), info = info)
     
     _copy_file(".classpath.tpl", '%s/.classpath' % info.root_path)
     _copy_file("build.properties.tpl", '%s/build.properties' % info.root_path)
@@ -141,13 +159,13 @@ def eb_plugin_create(cfg_file):
         if info.header_file_tpl == "":
             _copy_file("header.h.tpl", "%s/include/%s" % (info.root_path, h_file))
         else:
-            _copy_file(info.header_file_tpl, "%s/include/%s" % (info.root_path, h_file), False)
+            _copy_file(info.header_file_tpl, "%s/include/%s" % (info.root_path, h_file), local_tpl = False)
 
     for c_file in info.source_files:
         if info.source_file_tpl == "":
             _copy_file("source.c.tpl", "%s/src/%s" % (info.root_path, c_file))
         else:
-            _copy_file(info.source_file_tpl, "%s/src/%s" % (info.root_path, c_file), False)
+            _copy_file(info.source_file_tpl, "%s/src/%s" % (info.root_path, c_file), local_tpl = False)
 
 
 def create_folders(root_path):

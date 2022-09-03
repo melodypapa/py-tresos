@@ -7,8 +7,8 @@ with open("README.md", "r") as fh:
 
 setup(
     name='py_tresos',
-    version = '1.0.0',
-    description="A python tool for EB Tresos Studio",
+    version = '1.2.0',
+    description="A Python tool for EB Tresos Studio Plugins",
 
     author = 'Melodypapa',
     author_email = "melodypapa@outlook.com",
@@ -40,6 +40,8 @@ setup(
     entry_points={
         'console_scripts': [
             'eb-plugin = py_tresos.cli.eb_plugin_cli:main',
+            'eb-guide  = py_tresos.cli.eb_guide_cli:main',
+            'eb-xpath  = py_tresos.cli.eb_xpath_cli:main',
         ]
     }
 )

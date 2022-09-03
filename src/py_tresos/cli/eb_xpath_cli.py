@@ -1,13 +1,14 @@
 import getopt
 import sys
 
-from ..models.plugin_folder_mgr import eb_plugin_create
+from ..models.xpath_folder_mgr import eb_xpath_create
+
 
 def _usage(error: str):
     if error != "":
         print(error)
-    print("eb_plugin [-c|--cfg name][-h|-help]")
-    print("Create EB Tresos Plugin folder structure")
+    print("eb_xpath [-c|--cfg name][-h|-help]")
+    print("Create EB XPath Plugin folder structure")
     print("   -c|--cfg name : The TOML configure file name")
     print("   -h            : Show the help information.")
     sys.exit(2)
@@ -34,7 +35,7 @@ def main():
         _usage("Please enter the TOML configure file name")
 
     try:
-        eb_plugin_create(cfg_name)
+        eb_xpath_create(cfg_name)
     except Exception as e:
         # print(e)
         raise (e)

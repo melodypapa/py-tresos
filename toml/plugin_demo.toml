@@ -1,30 +1,33 @@
 [component]
-name       = "Plugin_Demo"
-author     = "Your Name"
-company    = "Your Company"
-version    = "1.0.0"
-ar_version = "4.0.3"
-vendor_id  = "0x0008"
-ar_package = "ARRoot"
+ar_package      = "ARRoot"
+ar_version      = "4.0.3"
+author          = "Your Name"
+company         = "Your Company"
+name            = "Plugin_Demo"
+vendor_id       = "8"
+version         = "1.0.0"
 
 header_files = [
-    "Plugin_Demo.h"
+  "Plugin_Demo.h",
 ]
 
 source_files = [
-    "Plugin_Demo.c"
+  "Plugin_Demo.c",
 ]
 
 gen_header_files = [
-    "Plugin_Demo_Cfg.h",
+  "Plugin_Demo_Cfg.h",
 ]
 
 gen_source_files = [
-    "Plugin_Demo_Cfg.c",
+  "Plugin_Demo_Cfg.c",
 ]
 
 tresos_root = "X:/tresos"
 
 [template]
-source_file = ""
-header_file = ""
+header_file         = ""
+source_file         = ""
+bswmd_armxl         = ""
+swc_interface_arxml = ""
+swc_internal_arxml  = ""

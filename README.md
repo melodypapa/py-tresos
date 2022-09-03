@@ -31,7 +31,7 @@ To Create the java project for the EB Tresos Studio Plugin.
 | Category  | Key              | Description                                                             |
 | --------- | ---------------- | ----------------------------------------------------------------------- |
 | component | name             | the plugin name                                                         |
-|           | author           | the author name of the plugin                                           |
+|           | author           | the author's name of the plugin                                         |
 |           | company          | the company owner for the plugin                                        |
 |           | version          | the version of the plugin                                               |
 |           | ar_version       | the AUTOSAR version of the plugin                                       |
@@ -91,8 +91,67 @@ header_file = ""
 
 ### 1.2.4. Example
 
-**Generate the default folder for EcuInfo**
+**Generate the default folder for Plugin Demo**
 
 ```
 eb-plugin -c toml/plugin_demo.toml
 ```
+
+## 1.3. eb-xpath
+
+To Create the java project for the EB Tresos Studio XPath Plugin.
+
+### 1.3.1. TOML configuration
+
+| Category  | Key        | Description                          |
+| --------- | ---------- | ------------------------------------ |
+| component | name       | the plugin name                      |
+|           | author     | the author's name of the plugin      |
+|           | company    | the company owner for the plugin     |
+|           | version    | the version of the plugin            |
+|           | ar_version | the AUTOSAR version of the plugin    |
+| java      | package    | the java package name for the plugin |
+|           | class      | the java class name for the plugin   |
+
+### 1.3.2. TOML configuration example
+
+```
+[component]
+name       =   "XPath_Demo"
+author     =   "Your Name"
+company    =   "Your name"
+version    =   "1.0.0"
+ar_version =   "4.0.3"
+
+[java]
+package    =   "org.ecliipse.sdv"
+class      =   "xpath_demo"
+``` 
+
+### 1.3.3. CLI
+
+`eb-xpath [-c|--cfg name][-h|-help]`
+
+```
+-c|--cfg name : The TOML configure file name
+-h            : Show the help information.
+```
+
+### 1.3.4. Example
+
+**Generate the default folder for XPath demo**
+
+```
+eb-plugin -c toml/xpath_demo.toml
+```
+
+## 1.4. Change notes
+
+**1.0.2**
+
+1. The ARXML template can be customized.
+
+**1.1.0**
+
+1. Add the supporting to create XPath Plugin.
+
