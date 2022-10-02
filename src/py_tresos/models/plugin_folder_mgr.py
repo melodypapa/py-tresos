@@ -1,6 +1,5 @@
 import os
 import os.path
-from pickle import FALSE
 import sys
 
 from shutil import copyfile
