@@ -51,7 +51,10 @@ def _generate_config_file(src, dst, info: GuideInfo, delimiter="#"):
         BACKEND_CLASS = info.backend_class,
         PAGE_CLASS = info.page_class,
         PUSH_EVENT_CLASS = info.push_event_class,
-        PUSH_OPERATION_CLASS = info.push_operation_class
+        PUSH_OPERATION_CLASS = info.push_operation_class,
+        SIDEBAR_CATEGORY = info.sidebar_category,
+        SIDEBAR_LABEL = info.sidebar_label,
+        SIDEBAR_TOOLTIP = info.sidebar_tooltip
     )
 
     with open(dst, 'w') as f_out:
@@ -70,6 +73,7 @@ def _generate_plugin_file(src, dst, info: GuideInfo):
         content = f_in.read()
 
     t = Templatelternative(content)
+
     new_content = t.substitute(
         COMPONENT = info.name, 
         VERSION = info.eb_version, 
@@ -87,7 +91,10 @@ def _generate_plugin_file(src, dst, info: GuideInfo):
         BACKEND_CLASS = info.backend_class,
         PAGE_CLASS = info.page_class,
         PUSH_EVENT_CLASS = info.push_event_class,
-        PUSH_OPERATION_CLASS = info.push_operation_class
+        PUSH_OPERATION_CLASS = info.push_operation_class,
+        SIDEBAR_CATEGORY = info.sidebar_category,
+        SIDEBAR_LABEL = info.sidebar_label,
+        SIDEBAR_TOOLTIP = info.sidebar_tooltip
     )
 
     with open(dst, 'w') as f_out:

@@ -42,14 +42,13 @@
          <!-- schema definition -->
            <schema>
                <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
-               <resource value="config/#{COMPONENT}.xdm"
-                         type="xdm"/>
+               <resource value="config/#{COMPONENT}.xdm" type="xdm"/>
            </schema>
 
            <!-- data definition -->
            <data>
                <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
-               <schemaNode path="ASPath:/TS_T00D0M0I0R0/GCDemo7"/>
+               <schemaNode path="ASPath:/#{AR_PACKAGE}/#{COMPONENT}"/>
            </data>
 
            <!-- generic editor definition -->
@@ -57,55 +56,59 @@
                    label="Default"
                    tooltip="Editor for the #{COMPONENT}_TS_#{VERSION}_Editor module">
                <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
-                 <parameter name="schema" value="ASPath:/TS_T00D0M0I0R0/GCDemo7"/>
+                 <parameter name="schema" value="ASPath:/#{AR_PACKAGE}/#{COMPONENT}"/>
                  <parameter name="title" value="#{COMPONENT}_TS_#{VERSION}_Editor editor"/>
                </class>
            </editor>
        </configuration>
    </extension>
 
-  <extension
-        point="dreisoft.tresos.guidedconfig.api.plugin.guidedconfigwizard">
-     <guidedconfigwizard id="#{COMPONENT}">
-        <backend class="#{PACKAGE}.#{BACKEND_CLASS}"/>
-        <gui class="#{PACKAGE}.#{PAGE_CLASS}"/>
-        <resultGui
-              class="dreisoft.tresos.guidedconfig.api.gui.page.ChangedDCtxtsResultWidget"
-              plugin="dreisoft.tresos.guidedconfig.api.plugin">
-        </resultGui>
-     </guidedconfigwizard>
-  </extension>
-  <extension
-        point="dreisoft.tresos.guidedconfig.api.plugin.trigger">
-     <trigger>
-        <autoconfigure
+   <extension point="dreisoft.tresos.guidedconfig.api.plugin.guidedconfigwizard">
+      <guidedconfigwizard id="#{COMPONENT}">
+         <backend class="#{PACKAGE}.#{BACKEND_CLASS}"/>
+         <gui class="#{PACKAGE}.#{PAGE_CLASS}"/>
+         <resultGui
+            class="dreisoft.tresos.guidedconfig.api.gui.page.ChangedDCtxtsResultWidget"
+            plugin="dreisoft.tresos.guidedconfig.api.plugin">
+         </resultGui>
+      </guidedconfigwizard>
+   </extension>
+
+   <extension point="dreisoft.tresos.guidedconfig.api.plugin.trigger">
+      <trigger>
+         <sidebar
+              categoryId="#{SIDEBAR_CATEGORY}" 
               id="#{COMPONENT}"
-              wizardId="#{COMPONENT}">
-           <display
-                 label="#{COMPONENT} Autoconfiguration"
-                 tooltip="#{COMPONENT} Autoconfiguration">
-           </display>
-           <visibility></visibility>
-        </autoconfigure>
-     </trigger>
-  </extension>
+              type="GCDemo"
+              wizardId="#{COMPONENT}"
+              wizardType="editor">
+            <visibility>
+               <with variable="ECUConfigContext.moduleId.#{COMPONENT}_TS_#{VERSION}">
+                  <equals value="true"/>
+               </with>
+            </visibility>
+            <display
+                 label="#{SIDEBAR_LABEL}"
+                 tooltip="#{SIDEBAR_TOOLTIP}">
+            </display>
+         </sidebar>
+      </trigger>
+   </extension>
 
-
-  <extension
-        point="dreisoft.tresos.guidedconfig.api.plugin.pushservice">
-     <pushoperation
-           desc="example Autoconfigure Operation"
-           id="Demo7AutoconfigureOperation"
-           name="Example Autoconfigure Operation">
-        <operationclass
-              class="dreisoft.tresos.guidedconfig.demo7.ExampleAutoconfigureOperation">
-        </operationclass>
-        <event>
+   <extension point="dreisoft.tresos.guidedconfig.api.plugin.pushservice">
+      <pushoperation
+           desc="#{COMPONENT} Push Operation"
+           id="#{COMPONENT}PushOperation"
+           name="#{COMPONENT} Pull Operation">
+         <operationclass
+            class="#{PACKAGE}.#{PUSH_OPERATION_CLASS}">
+         </operationclass>
+         <event>
             <with variable="class">
-                <equals value="dreisoft.tresos.guidedconfig.demo7.ExampleAutoconfigureEvent"/>
+               <equals value="#{PACKAGE}.#{PUSH_EVENT_CLASS}"/>
             </with>
-        </event>
-     </pushoperation>
-  </extension>
+         </event>
+      </pushoperation>
+   </extension>
 
 </plugin>
